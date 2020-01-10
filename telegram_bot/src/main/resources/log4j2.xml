@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%d{HH:mm:ss:SS}] [%t] %highlight{%m%n}"/>
+        </Console>
+        <RollingFile
+                name="File"
+                fileName="logs/latest.logger"
+                filePattern="logs/logger-%i.logger"
+        >
+            <PatternLayout pattern="%d{HH:mm:ss:SS} [%t] %c.%M%n  %-5p %m%n"/>
+            <OnStartupTriggeringPolicy minSize="0"/>
+            <DefaultRolloverStrategy min="1" max="5"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="Console" level="info"/>
+            <AppenderRef ref="File" level="info"/>
+        </Root>
+    </Loggers>
+</Configuration>
